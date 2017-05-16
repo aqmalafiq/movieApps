@@ -33,7 +33,7 @@ class MovieListViewController: UIViewController {
             self.movies = movieList
             self.collectionView.reloadData()
             for movie in self.movies { //download pic poster
-                movie.downloadPicTask(posterURL: movie.posterURL, completionBlock: { (image: UIImage, success: Bool, error: Error?) in
+                MovieLoader.sharedLoader.downloadPicTask(posterURL: movie.posterURL, completionBlock: { (image: UIImage, success: Bool, error: Error?) in
                     //code
                     movie.poster = image
                     self.collectionView.reloadData()

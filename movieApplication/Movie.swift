@@ -27,30 +27,7 @@ class Movie {
         self.posterURL = posterURL
         }
     
-    func downloadPicTask(posterURL: String,completionBlock: @ escaping ((_ posterImage: UIImage,_ success: Bool,_ error: Error?) -> Void)){
-        let session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
-        let url: URL = URL.init(string: posterURL)!
-        
-        let downloadPicTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
-            //code
-            
-            let httpCode: Int = (response as! HTTPURLResponse).statusCode
-            let image: UIImage = UIImage(data: data!, scale: 1.0)!
-            if httpCode == 200 {
-                
-                DispatchQueue.main.async {
-                    completionBlock(image,true,nil)
-                }
-                
-            } else {
-                DispatchQueue.main.async {
-                    completionBlock(image,true,nil)
-                }
-            }
-        }
-        downloadPicTask.resume()
-    }
-
+    
 }
 
     
