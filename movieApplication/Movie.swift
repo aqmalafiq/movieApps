@@ -14,16 +14,16 @@ class Movie {
     var title: String
     var description: String
     var duration: Int
-    //var releaseDate: Date
+    var releaseDate: Date
     var poster: UIImage?
     var posterURL: String
    
-    init(id:String,title: String,description: String,duration: Int,posterURL: String) {
+    init(id:String,title: String,description: String,duration: Int,releaseDate: Date,posterURL: String) {
         self.id = id
         self.title = title
         self.description = description
         self.duration = duration
-       // self.releaseDate = releaseDate
+        self.releaseDate = releaseDate
         self.posterURL = posterURL
         }
     

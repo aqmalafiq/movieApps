@@ -37,10 +37,10 @@ extension MovieLoader {
                 let title: String = jsonItem["title"] as! String
                 let duration: Int = jsonItem["duration"] as! Int
                 let posterURL:  String = jsonItem["image"] as! String
-               // let releaseDate: Date = jsonItem["releaseDate"] as! Date
+                let releaseDate: Date = Date(timeIntervalSince1970: jsonItem["releaseDate"] as! TimeInterval)
                 let description: String = jsonItem["description"] as! String
                 
-                let newMovie: Movie = Movie(id: id,title: title,description: description,duration: duration,posterURL: posterURL)
+                let newMovie: Movie = Movie(id: id,title: title,description: description,duration: duration,releaseDate: releaseDate,posterURL: posterURL)
                 movieList.append(newMovie)
                 
             }
