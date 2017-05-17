@@ -36,7 +36,12 @@ class Movie {
                 numOfRating += 1
             }
         }
-        return (totalRating / numOfRating)
+        if numOfRating != 0 {
+            return (totalRating / numOfRating)
+        } else {
+            return 0
+        }
+        
     }
 }
 

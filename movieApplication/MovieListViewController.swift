@@ -18,9 +18,9 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //this is what the storyboard do if you drag and drop the de
-//        self.collectionView.register(MovieCell.self, forCellWithReuseIdentifier: "movieCell")
-//        self.collectionView.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
-
+        //        self.collectionView.register(MovieCell.self, forCellWithReuseIdentifier: "movieCell")
+        //        self.collectionView.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
+        self.view.backgroundColor = UIColor.black
         refreshMovieList()
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -45,6 +45,7 @@ class MovieListViewController: UIViewController {
         }
         RatingLoader.sharedLoader.retrieveRatingList { (ratingList: [Rating], success: Bool, error: Error?) in
             self.ratingList = ratingList
+            //self.collectionView.reloadData()
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -76,6 +77,7 @@ extension MovieListViewController: UICollectionViewDataSource {
         let cell : CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! CollectionViewCell
         cell.movieTitleLabel.text = movies[indexPath.row].title
         cell.imageView.image = movies[indexPath.row].poster
+        cell.starRating.rating = movies[indexPath.row].calculateAvgRating(ratingList: ratingList) ?? 0
         return cell
     }
 }

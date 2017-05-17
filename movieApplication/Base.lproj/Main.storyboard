@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,10 +22,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pwa-i4-602">
-                                <rect key="frame" x="16" y="83" width="343" height="584"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pwa-i4-602">
+                                <rect key="frame" x="12" y="82" width="350" height="585"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="585" id="3sh-99-jKJ"/>
+                                    <constraint firstAttribute="width" constant="350" id="oNx-Ra-3gw"/>
+                                    <constraint firstAttribute="height" constant="585" id="tWo-hd-eit"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a0m-Qa-j2u">
                                     <size key="itemSize" width="140" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -46,25 +51,41 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1R-UF-ssh">
-                                                    <rect key="frame" x="20" y="179.5" width="100" height="14.5"/>
+                                                    <rect key="frame" x="20" y="179" width="100" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFX-Im-DD2" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="74" y="157" width="55" height="11"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="q1R-UF-ssh" secondAttribute="bottom" constant="6" id="4TK-8o-cOS"/>
                                             <constraint firstAttribute="trailing" secondItem="TgK-rw-6io" secondAttribute="trailing" id="aTY-JY-70L"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="SFX-Im-DD2" secondAttribute="trailing" constant="3" id="h7B-lI-Emx"/>
+                                            <constraint firstItem="SFX-Im-DD2" firstAttribute="leading" secondItem="vbo-60-mYl" secondAttribute="leadingMargin" constant="66" id="kNm-vy-tfF"/>
+                                            <constraint firstItem="q1R-UF-ssh" firstAttribute="top" secondItem="SFX-Im-DD2" secondAttribute="bottom" constant="11" id="kUW-ZT-a3U"/>
                                             <constraint firstItem="TgK-rw-6io" firstAttribute="top" secondItem="vbo-60-mYl" secondAttribute="top" id="lr0-u5-iNt"/>
                                             <constraint firstItem="TgK-rw-6io" firstAttribute="leading" secondItem="vbo-60-mYl" secondAttribute="leading" id="uJj-Dn-LVz"/>
                                             <constraint firstAttribute="trailing" secondItem="q1R-UF-ssh" secondAttribute="trailing" constant="20" id="uUe-G6-pkt"/>
+                                            <constraint firstItem="SFX-Im-DD2" firstAttribute="top" secondItem="vbo-60-mYl" secondAttribute="top" constant="157" id="vXF-2c-vk1"/>
                                             <constraint firstItem="q1R-UF-ssh" firstAttribute="leading" secondItem="vbo-60-mYl" secondAttribute="leading" constant="20" id="xXv-Rr-W8a"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="TgK-rw-6io" id="Y9w-Bm-UlT"/>
                                             <outlet property="movieTitleLabel" destination="q1R-UF-ssh" id="avd-qo-hPK"/>
+                                            <outlet property="starRating" destination="SFX-Im-DD2" id="mdK-9z-At4"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -75,6 +96,10 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Pwa-i4-602" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="1JF-WC-jc7"/>
+                            <constraint firstItem="Pwa-i4-602" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GPu-jR-IB1"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Now Showing" id="yUz-jK-oDW"/>
                     <connections>
