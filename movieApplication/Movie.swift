@@ -17,6 +17,7 @@ class Movie {
     var releaseDate: Date
     var poster: UIImage?
     var posterURL: String
+    
    
     init(id:String,title: String,description: String,duration: Int,releaseDate: Date,posterURL: String) {
         self.id = id
@@ -26,8 +27,17 @@ class Movie {
         self.releaseDate = releaseDate
         self.posterURL = posterURL
         }
-    
-    
+    func calculateAvgRating (ratingList: [Rating]) -> Double {
+        var totalRating: Double = 0
+        var numOfRating: Double = 0
+        for ratingItem in ratingList {
+            if ratingItem.movieID == self.id {
+                totalRating += ratingItem.rating
+                numOfRating += 1
+            }
+        }
+        return (totalRating / numOfRating)
+    }
 }
 
     

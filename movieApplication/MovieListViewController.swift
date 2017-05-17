@@ -13,13 +13,16 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var movies: [Movie] = []
+    var ratingList: [Rating] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //this is what the storyboard do if you drag and drop the de
 //        self.collectionView.register(MovieCell.self, forCellWithReuseIdentifier: "movieCell")
 //        self.collectionView.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
+
         refreshMovieList()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -40,12 +43,21 @@ class MovieListViewController: UIViewController {
                 })
             }
         }
+        RatingLoader.sharedLoader.retrieveRatingList { (ratingList: [Rating], success: Bool, error: Error?) in
+            self.ratingList = ratingList
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let movieDetailVC: MovieDetailViewController = segue.destination as! MovieDetailViewController
+        movieDetailVC.movieSelected = sender as? Movie
     }
 }
 extension MovieListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //code
         debugPrint("item \(indexPath.row) was selected")
+        let movieSelected: Movie = movies[indexPath.row]
+        performSegue(withIdentifier: "showMovieDetailSegue", sender: movieSelected)
     }
     
 }
@@ -55,8 +67,6 @@ extension MovieListViewController: UICollectionViewDataSource {
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //code
-        
         debugPrint(movies.count)
         return movies.count
     }
