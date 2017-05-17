@@ -55,5 +55,5 @@ extension RatingLoader {
         }
         dataTask.resume()
     }//end of file retrieval
-    
+
 }

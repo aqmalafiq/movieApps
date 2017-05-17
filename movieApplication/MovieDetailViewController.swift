@@ -7,23 +7,32 @@
 //
 
 import UIKit
-
+import Cosmos
 class MovieDetailViewController: UIViewController {
 
     var movieSelected: Movie?
+    var selectedMovieRating: Double?
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageLabel: UIImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var avgRating: CosmosView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
        self.view.backgroundColor = UIColor(patternImage: (movieSelected?.poster)!)
         
         imageLabel.image = movieSelected?.poster
-        dateLabel.text = movieSelected?.releaseDate.description
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+        dateLabel.text = dateFormatter.string(from: (movieSelected?.releaseDate)!)
         titleLabel.text = movieSelected?.title
+        descriptionLabel.backgroundColor = UIColor.lightGray
         descriptionLabel.text = movieSelected?.description
+        descriptionLabel.allowsEditingTextAttributes = false
+        avgRating.rating = selectedMovieRating!
+        avgRating.settings.updateOnTouch = false
         // Do any additional setup after loading the view.
     }
 
