@@ -21,14 +21,26 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.view.backgroundColor = UIColor(patternImage: (movieSelected?.poster)!)
-        
+       /*
+        let backImage: UIImageView = UIImageView(image: movieSelected?.poster)
+        backImage.frame = view.bounds
+        //view.addSubview(backImage)
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.frame = backImage.bounds
+        view.addSubview(blurredEffectView)
+        view.sendSubview(toBack: self.view)
+       //self.view.backgroundColor = UIColor(patternImage: (blurredEffectView))
+        */
+        self.view.backgroundColor = UIColor.black
         imageLabel.image = movieSelected?.poster
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
         dateLabel.text = dateFormatter.string(from: (movieSelected?.releaseDate)!)
+        dateLabel.adjustsFontSizeToFitWidth = true
         titleLabel.text = movieSelected?.title
-        descriptionLabel.backgroundColor = UIColor.lightGray
+        titleLabel.adjustsFontSizeToFitWidth = true
+        //descriptionLabel.backgroundColor = UIColor.lightGray
         descriptionLabel.text = movieSelected?.description
         descriptionLabel.allowsEditingTextAttributes = false
         avgRating.rating = selectedMovieRating!
@@ -41,12 +53,14 @@ class MovieDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let popUpReviewVC: PopUpAddReviewViewController = segue.destination as! PopUpAddReviewViewController
+        popUpReviewVC.movieID = movieSelected?.id
+        
+    }
  
 
 }

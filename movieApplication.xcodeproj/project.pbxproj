@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0997347DFB0733C9118E33D5 /* Pods_movieApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86AC49D74EDF985C09B111DA /* Pods_movieApplication.framework */; };
 		3305921786FC999F46972AE1 /* Pods_movieApplicationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305A185B86B741F5B41DE19E /* Pods_movieApplicationUITests.framework */; };
+		827628931ECD404C00644955 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827628921ECD404C00644955 /* User.swift */; };
+		827628951ECD4C7700644955 /* PopUpAddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827628941ECD4C7700644955 /* PopUpAddReviewViewController.swift */; };
 		8283835B1ECA861E007C75A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8283835A1ECA861E007C75A9 /* AppDelegate.swift */; };
 		8283835D1ECA861E007C75A9 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8283835C1ECA861E007C75A9 /* MovieListViewController.swift */; };
 		828383601ECA861E007C75A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8283835E1ECA861E007C75A9 /* Main.storyboard */; };
@@ -50,6 +52,8 @@
 		305A185B86B741F5B41DE19E /* Pods_movieApplicationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_movieApplicationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C71607A761FCBDC5F929F07 /* Pods-movieApplicationUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movieApplicationUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-movieApplicationUITests/Pods-movieApplicationUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		80A6CCD916F1E20AAEC9C8C5 /* Pods-movieApplicationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movieApplicationTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-movieApplicationTests/Pods-movieApplicationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		827628921ECD404C00644955 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		827628941ECD4C7700644955 /* PopUpAddReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpAddReviewViewController.swift; sourceTree = "<group>"; };
 		828383571ECA861E007C75A9 /* movieApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = movieApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8283835A1ECA861E007C75A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8283835C1ECA861E007C75A9 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +150,9 @@
 				8283835C1ECA861E007C75A9 /* MovieListViewController.swift */,
 				828383941ECAE8D4007C75A9 /* MovieDetailViewController.swift */,
 				828383881ECA98CD007C75A9 /* CollectionViewCell.swift */,
+				827628941ECD4C7700644955 /* PopUpAddReviewViewController.swift */,
 				8283835E1ECA861E007C75A9 /* Main.storyboard */,
+				827628921ECD404C00644955 /* User.swift */,
 				8283838A1ECA9AA2007C75A9 /* Movie.swift */,
 				8283838E1ECA9AAD007C75A9 /* MovieLoader.swift */,
 				828B200B1ECBF09B007B80BA /* Rating.swift */,
@@ -481,9 +487,11 @@
 				8283835B1ECA861E007C75A9 /* AppDelegate.swift in Sources */,
 				8283838B1ECA9AA2007C75A9 /* Movie.swift in Sources */,
 				828383951ECAE8D4007C75A9 /* MovieDetailViewController.swift in Sources */,
+				827628951ECD4C7700644955 /* PopUpAddReviewViewController.swift in Sources */,
 				828383891ECA98CD007C75A9 /* CollectionViewCell.swift in Sources */,
 				8283838D1ECA9AA9007C75A9 /* Cinema.swift in Sources */,
 				8283838F1ECA9AAD007C75A9 /* MovieLoader.swift in Sources */,
+				827628931ECD404C00644955 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

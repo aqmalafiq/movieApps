@@ -11,12 +11,22 @@ import UIKit
 class MovieListViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    var movies: [Movie] = []
+    //assume user has logged in
+        var movies: [Movie] = []
     var ratingList: [Rating] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = UIColor.darkGray
+        let defaults: UserDefaults = UserDefaults.standard
+        
+        if defaults.string(forKey: "loggedInUser") == nil {
+            let loggedInUserID: String = "ECD600DF-EDF1-5B49-FF8D-458625C56000"
+            defaults.set(loggedInUserID, forKey: "loggedInUserID")
+            defaults.synchronize()
+        }
+        
+        
         //this is what the storyboard do if you drag and drop the de
         //        self.collectionView.register(MovieCell.self, forCellWithReuseIdentifier: "movieCell")
         //        self.collectionView.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
@@ -75,6 +85,7 @@ extension MovieListViewController: UICollectionViewDataSource {
         //code
         let cell : CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! CollectionViewCell
         cell.movieTitleLabel.text = movies[indexPath.row].title
+        cell.movieTitleLabel.adjustsFontSizeToFitWidth = true
         cell.imageView.image = movies[indexPath.row].poster
         cell.starRating.rating = movies[indexPath.row].calculateAvgRating(ratingList: ratingList)
         cell.starRating.settings.updateOnTouch = false//set the star untouchable

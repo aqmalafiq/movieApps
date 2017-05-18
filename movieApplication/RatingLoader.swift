@@ -32,14 +32,13 @@ extension RatingLoader {
             for jsonItem in jsonData {
                 
                 let rating: Double = jsonItem["star"] as! Double
-                let movieInfo: [[String : AnyObject]] = jsonItem["movieID"] as! [[String : AnyObject]]
-                
-                for movieItem in movieInfo {
-                    let movieID: String = movieItem["objectId"] as! String
-                    
-                    let newRating: Rating = Rating.init(userID: nil, movieID: movieID, rating: rating)
+                let ratingDescription: String = jsonItem["ratingDescription"] as? String ?? ""
+                let movieInfo: [String : AnyObject] = jsonItem["movieID"] as! [String : AnyObject]
+                let movieID: String = movieInfo["objectId"] as! String
+                let userInfo: [String : AnyObject] = jsonItem["userID"] as! [String : AnyObject]
+                let userID: String = userInfo["objectId"] as! String
+                let newRating: Rating = Rating.init(userID: userID, movieID: movieID, rating: rating, ratingDescription: ratingDescription)
                     ratingList.append(newRating)
-                }
             }
             let httpCode : Int = (response as! HTTPURLResponse).statusCode
             if httpCode == 200 {
@@ -55,5 +54,66 @@ extension RatingLoader {
         }
         dataTask.resume()
     }//end of file retrieval
-
+    func postNewRating(newRating: Rating, completionBlock: @escaping ((_ success: Bool, _ error: Error?) -> Void)) {
+        var urlRequest: URLRequest = URLRequest(url: targetURL)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpBody = newRating.getJSONDataRating()
+        let postTask: URLSessionDataTask = self.session.dataTask(with: urlRequest) { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            
+            let httpCode: Int = (response as! HTTPURLResponse).statusCode
+            if httpCode == 200 || httpCode == 201 {
+                let jsonData: [String : AnyObject] = try! JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.init(rawValue: 0)) as! [String : AnyObject]
+                let ratingID: String = jsonData["objectId"] as! String
+                newRating.ratingID = ratingID
+                self.postNewRatingAddRelationMovieIDColumn(newRating: newRating, completionBlock: { (success: Bool, error: Error?) in
+                    //code
+                    self.postNewRatingAddRelationUserIDColumn(newRating: newRating, completionBlock: { (success: Bool, error: Error?) in
+                        //code
+                         completionBlock(true, nil)
+                    })
+                })
+            } else {
+                completionBlock(false, nil)
+            }
+        }
+        postTask.resume()
+    }//end of file post
+    func postNewRatingAddRelationMovieIDColumn(newRating: Rating, completionBlock: @escaping ((_ success: Bool,_ error: Error?) -> Void)) {
+        var newTargetURL: URL = targetURL.appendingPathComponent(newRating.ratingID!)
+        newTargetURL = newTargetURL.appendingPathComponent("movieID")
+        var urlRequest: URLRequest = URLRequest(url: newTargetURL)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpBody = newRating.getJSONDataMovieID()
+        
+        let postTask: URLSessionDataTask = self.session.dataTask(with: urlRequest) { (data: Data?, response: URLResponse?, error: Error?) in
+            let httpCode: Int = (response as! HTTPURLResponse).statusCode
+            if httpCode == 200 {
+                completionBlock(true, nil)
+            } else {
+                completionBlock(false, nil)
+            }
+        }
+        postTask.resume()
+    }
+    func postNewRatingAddRelationUserIDColumn(newRating: Rating, completionBlock: @escaping ((_ success: Bool,_ error: Error?) -> Void)) {
+        var newTargetURL: URL = targetURL.appendingPathComponent(newRating.ratingID!)
+        newTargetURL = newTargetURL.appendingPathComponent("userID")
+        var urlRequest: URLRequest = URLRequest(url: newTargetURL)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpBody = newRating.getJSONDataUserID()
+        
+        let postTask: URLSessionDataTask = self.session.dataTask(with: urlRequest) { (data: Data?, response: URLResponse?, error: Error?) in
+            let httpCode: Int = (response as! HTTPURLResponse).statusCode
+            if httpCode == 200 {
+                completionBlock(true, nil)
+            } else {
+                completionBlock(false, nil)
+            }
+        }
+        postTask.resume()
+    }
 }
