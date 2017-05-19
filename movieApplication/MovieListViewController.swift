@@ -9,17 +9,20 @@ import Foundation
 import UIKit
 
 class MovieListViewController: UIViewController {
-
     @IBOutlet weak var collectionView: UICollectionView!
-    //assume user has logged in
-        var movies: [Movie] = []
+    @IBOutlet weak var searchController: UISearchBar!
+    
+    var movies: [Movie] = []
+    var filteredMovies: [Movie] = []
     var ratingList: [Rating] = []
+    var searchActive: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         navigationController?.navigationBar.barTintColor = UIColor.darkGray
         let defaults: UserDefaults = UserDefaults.standard
-        
+        //assume user has logged in
         if defaults.string(forKey: "loggedInUser") == nil {
             let loggedInUserID: String = "ECD600DF-EDF1-5B49-FF8D-458625C56000"
             defaults.set(loggedInUserID, forKey: "loggedInUserID")
@@ -32,10 +35,9 @@ class MovieListViewController: UIViewController {
         //        self.collectionView.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
         self.view.backgroundColor = UIColor.black
         refreshMovieList()
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -60,9 +62,9 @@ class MovieListViewController: UIViewController {
         let movieIndex: Int = (sender as? Int)!
         movieDetailVC.movieSelected = movies[movieIndex]
         movieDetailVC.selectedMovieRating = movies[movieIndex].calculateAvgRating(ratingList: ratingList)
-        
     }
 }
+
 extension MovieListViewController: UICollectionViewDelegate { //collectionview cell button action
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         debugPrint("item \(indexPath.row) was selected")
@@ -78,18 +80,64 @@ extension MovieListViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         debugPrint(movies.count)
-        return movies.count
+        if searchActive {
+            return filteredMovies.count
+        } else {
+            return movies.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //code
         let cell : CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! CollectionViewCell
-        cell.movieTitleLabel.text = movies[indexPath.row].title
+        if searchActive {
+            cell.movieTitleLabel.text = filteredMovies[indexPath.row].title
+            cell.imageView.image = filteredMovies[indexPath.row].poster
+            cell.starRating.rating = filteredMovies[indexPath.row].calculateAvgRating(ratingList: ratingList)
+        } else {
+            cell.movieTitleLabel.text = movies[indexPath.row].title
+            cell.imageView.image = movies[indexPath.row].poster
+            cell.starRating.rating = movies[indexPath.row].calculateAvgRating(ratingList: ratingList)
+        }
         cell.movieTitleLabel.adjustsFontSizeToFitWidth = true
-        cell.imageView.image = movies[indexPath.row].poster
-        cell.starRating.rating = movies[indexPath.row].calculateAvgRating(ratingList: ratingList)
         cell.starRating.settings.updateOnTouch = false//set the star untouchable
         return cell
+    }
+}
+extension MovieListViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+         searchActive = true
+         searchController.showsCancelButton = true
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+        self.searchController.resignFirstResponder()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+        self.searchController.resignFirstResponder()
+        searchController.showsCancelButton = false
+        searchController.text = ""
+        self.collectionView.reloadData()
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+         searchController.showsCancelButton = true
+        filteredMovies.removeAll()
+            for movieItem in movies {
+                if (movieItem.title.lowercased()).range(of: searchText.lowercased()) != nil  {
+                    filteredMovies.append(movieItem)
+                }
+            }
+        if(filteredMovies.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.collectionView.reloadData()
+        
     }
 }
 

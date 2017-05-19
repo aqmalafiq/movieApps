@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pwa-i4-602">
-                                <rect key="frame" x="20" y="84" width="335" height="583"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a0m-Qa-j2u">
                                     <size key="itemSize" width="160" height="250"/>
@@ -91,22 +91,53 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="IeZ-bN-sFs"/>
                                 </connections>
                             </collectionView>
+                            <searchBar contentMode="redraw" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="otb-ie-nUj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Tjx-Sl-Xvf"/>
+                                    <constraint firstAttribute="width" constant="375" id="jJG-r1-d05"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="aMW-wf-yRV"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Pwa-i4-602" firstAttribute="top" secondItem="otb-ie-nUj" secondAttribute="bottom" id="3Vy-Fr-vIb"/>
                             <constraint firstItem="Pwa-i4-602" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="8TA-jE-xde"/>
-                            <constraint firstItem="Pwa-i4-602" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="BeY-Ly-vpe"/>
-                            <constraint firstItem="Pwa-i4-602" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="pl8-VD-58d"/>
-                            <constraint firstAttribute="trailing" secondItem="Pwa-i4-602" secondAttribute="trailing" constant="20" id="vyE-jM-POK"/>
+                            <constraint firstItem="Pwa-i4-602" firstAttribute="leading" secondItem="otb-ie-nUj" secondAttribute="leading" id="8n9-au-kC7"/>
+                            <constraint firstItem="Pwa-i4-602" firstAttribute="top" secondItem="otb-ie-nUj" secondAttribute="bottom" id="9zo-LG-2DY"/>
+                            <constraint firstItem="Pwa-i4-602" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BeY-Ly-vpe"/>
+                            <constraint firstAttribute="trailing" secondItem="otb-ie-nUj" secondAttribute="trailing" id="Lpo-6s-tfI"/>
+                            <constraint firstItem="Pwa-i4-602" firstAttribute="trailing" secondItem="otb-ie-nUj" secondAttribute="trailing" id="hNB-7g-Pri"/>
+                            <constraint firstItem="otb-ie-nUj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iu3-C4-PL4"/>
+                            <constraint firstItem="otb-ie-nUj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="otq-IP-7zE"/>
+                            <constraint firstAttribute="trailing" secondItem="Pwa-i4-602" secondAttribute="trailing" id="vyE-jM-POK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Now Showing" id="yUz-jK-oDW"/>
                     <connections>
                         <outlet property="collectionView" destination="Pwa-i4-602" id="ioF-HA-uhA"/>
+                        <outlet property="searchController" destination="otb-ie-nUj" id="Vms-Br-BUm"/>
+                        <outlet property="searchDisplayController" destination="vAb-rJ-8ii" id="2BF-g0-4Lv"/>
                         <segue destination="zjM-dL-SyV" kind="show" identifier="showMovieDetailSegue" id="jbr-63-RfT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="vAb-rJ-8ii">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="IH9-EG-4pI"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="eiA-2Y-aSG"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="LGl-h5-K5i"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="Gm2-O4-BEa"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1152.8" y="151.57421289355324"/>
         </scene>
@@ -148,7 +179,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <color key="tintColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
@@ -156,6 +187,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8L-Ko-0sR">
                                         <rect key="frame" x="162" y="89" width="188" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
                                         <color key="textColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -164,6 +196,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwf-a8-5IF">
                                         <rect key="frame" x="166" y="8" width="184" height="73"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="28"/>
                                         <color key="textColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -176,7 +209,9 @@
                                             <color key="titleColor" red="0.20973882769999999" green="0.3493012539" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="4g0-oJ-l5R" kind="presentation" identifier="showPopOutViewController" id="4sx-FJ-vVT"/>
+                                            <segue destination="4g0-oJ-l5R" kind="popoverPresentation" identifier="showPopOutViewController" popoverAnchorView="jTI-by-JZA" id="4sx-FJ-vVT">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                 </subviews>
