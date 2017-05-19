@@ -238,6 +238,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addReviewButton" destination="jTI-by-JZA" id="M7h-1A-4pC"/>
                         <outlet property="avgRating" destination="RGJ-fB-nCx" id="Rmc-5D-GNz"/>
                         <outlet property="dateLabel" destination="N8L-Ko-0sR" id="dPe-9j-TnA"/>
                         <outlet property="descriptionLabel" destination="4hi-4Q-ihP" id="qnc-lm-9nQ"/>

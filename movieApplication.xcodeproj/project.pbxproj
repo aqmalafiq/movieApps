@@ -22,8 +22,6 @@
 		8283838B1ECA9AA2007C75A9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8283838A1ECA9AA2007C75A9 /* Movie.swift */; };
 		8283838D1ECA9AA9007C75A9 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8283838C1ECA9AA9007C75A9 /* Cinema.swift */; };
 		8283838F1ECA9AAD007C75A9 /* MovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8283838E1ECA9AAD007C75A9 /* MovieLoader.swift */; };
-		828383921ECAB36F007C75A9 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828383901ECAB36F007C75A9 /* MovieCell.swift */; };
-		828383931ECAB36F007C75A9 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828383911ECAB36F007C75A9 /* MovieCell.xib */; };
 		828383951ECAE8D4007C75A9 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828383941ECAE8D4007C75A9 /* MovieDetailViewController.swift */; };
 		828B200C1ECBF09B007B80BA /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828B200B1ECBF09B007B80BA /* Rating.swift */; };
 		828B200E1ECBF1C6007B80BA /* RatingLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828B200D1ECBF1C6007B80BA /* RatingLoader.swift */; };
@@ -71,8 +69,6 @@
 		8283838A1ECA9AA2007C75A9 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		8283838C1ECA9AA9007C75A9 /* Cinema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
 		8283838E1ECA9AAD007C75A9 /* MovieLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieLoader.swift; sourceTree = "<group>"; };
-		828383901ECAB36F007C75A9 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
-		828383911ECAB36F007C75A9 /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		828383941ECAE8D4007C75A9 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		828B200B1ECBF09B007B80BA /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		828B200D1ECBF1C6007B80BA /* RatingLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingLoader.swift; sourceTree = "<group>"; };
@@ -148,8 +144,8 @@
 			children = (
 				8283835A1ECA861E007C75A9 /* AppDelegate.swift */,
 				8283835C1ECA861E007C75A9 /* MovieListViewController.swift */,
-				828383941ECAE8D4007C75A9 /* MovieDetailViewController.swift */,
 				828383881ECA98CD007C75A9 /* CollectionViewCell.swift */,
+				828383941ECAE8D4007C75A9 /* MovieDetailViewController.swift */,
 				827628941ECD4C7700644955 /* PopUpAddReviewViewController.swift */,
 				8283835E1ECA861E007C75A9 /* Main.storyboard */,
 				827628921ECD404C00644955 /* User.swift */,
@@ -161,8 +157,6 @@
 				828383611ECA861E007C75A9 /* Assets.xcassets */,
 				828383631ECA861E007C75A9 /* LaunchScreen.storyboard */,
 				828383661ECA861E007C75A9 /* Info.plist */,
-				828383901ECAB36F007C75A9 /* MovieCell.swift */,
-				828383911ECAB36F007C75A9 /* MovieCell.xib */,
 			);
 			path = movieApplication;
 			sourceTree = "<group>";
@@ -316,7 +310,6 @@
 			files = (
 				828383651ECA861E007C75A9 /* LaunchScreen.storyboard in Resources */,
 				828383621ECA861E007C75A9 /* Assets.xcassets in Resources */,
-				828383931ECAB36F007C75A9 /* MovieCell.xib in Resources */,
 				828383601ECA861E007C75A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,7 +473,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				828383921ECAB36F007C75A9 /* MovieCell.swift in Sources */,
 				8283835D1ECA861E007C75A9 /* MovieListViewController.swift in Sources */,
 				828B200C1ECBF09B007B80BA /* Rating.swift in Sources */,
 				828B200E1ECBF1C6007B80BA /* RatingLoader.swift in Sources */,

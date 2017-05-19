@@ -8,11 +8,16 @@
 
 import UIKit
 import Cosmos
-class MovieDetailViewController: UIViewController {
 
+protocol addedReviewDelegate {
+    func didAddReview(vc: MovieDetailViewController)
+}
+class MovieDetailViewController: UIViewController {
     var movieSelected: Movie?
     var selectedMovieRating: Double?
+    var ratingList: [Rating]?
     
+    @IBOutlet weak var addReviewButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageLabel: UIImageView!
     @IBOutlet weak var descriptionLabel: UITextView!
@@ -21,30 +26,23 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       /*
-        let backImage: UIImageView = UIImageView(image: movieSelected?.poster)
-        backImage.frame = view.bounds
-        //view.addSubview(backImage)
-        let blurEffect = UIBlurEffect(style: .dark)
-        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
-        blurredEffectView.frame = backImage.bounds
-        view.addSubview(blurredEffectView)
-        view.sendSubview(toBack: self.view)
-       //self.view.backgroundColor = UIColor(patternImage: (blurredEffectView))
-        */
-        self.view.backgroundColor = UIColor.black
-        imageLabel.image = movieSelected?.poster
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
-        dateLabel.text = dateFormatter.string(from: (movieSelected?.releaseDate)!)
-        dateLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.text = movieSelected?.title
-        titleLabel.adjustsFontSizeToFitWidth = true
-        //descriptionLabel.backgroundColor = UIColor.lightGray
-        descriptionLabel.text = movieSelected?.description
-        descriptionLabel.allowsEditingTextAttributes = false
-        avgRating.rating = selectedMovieRating!
-        avgRating.settings.updateOnTouch = false
+        
+        UItweak()
+        let defaults: UserDefaults = UserDefaults.standard
+        let userID: String = defaults.object(forKey: "loggedInUserID") as! String
+        var userReviewed: Bool = false
+        for ratingItem in ratingList! {
+            if ratingItem.userID == userID {
+                if ratingItem.movieID == movieSelected?.id {
+                    userReviewed = true
+                }   
+            }
+        }
+        
+        if userReviewed {
+            addReviewButton.setTitle("Reviewed", for: .normal)
+            addReviewButton.isEnabled = false
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -61,6 +59,27 @@ class MovieDetailViewController: UIViewController {
         popUpReviewVC.movieID = movieSelected?.id
         
     }
- 
-
+    func UItweak() {
+        self.view.backgroundColor = UIColor.black
+        imageLabel.image = movieSelected?.poster
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+        dateLabel.text = dateFormatter.string(from: (movieSelected?.releaseDate)!)
+        dateLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.text = movieSelected?.title
+        titleLabel.adjustsFontSizeToFitWidth = true
+        descriptionLabel.text = movieSelected?.description
+        descriptionLabel.allowsEditingTextAttributes = false
+        avgRating.rating = selectedMovieRating!
+        avgRating.settings.updateOnTouch = false
+    }
+    var delegate: addedReviewDelegate?
 }
+extension MovieDetailViewController: AddReviewDelegate {
+  
+    func didAddReview(vc: PopUpAddReviewViewController) {
+        self.dismiss(animated: true, completion: nil)
+        self.delegate?.didAddReview(vc: self)
+    }
+}
+

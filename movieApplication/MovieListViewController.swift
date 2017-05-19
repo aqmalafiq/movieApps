@@ -23,7 +23,7 @@ class MovieListViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor.darkGray
         let defaults: UserDefaults = UserDefaults.standard
         //assume user has logged in
-        if defaults.string(forKey: "loggedInUser") == nil {
+        if defaults.string(forKey: "loggedInUserID") == nil {
             let loggedInUserID: String = "ECD600DF-EDF1-5B49-FF8D-458625C56000"
             defaults.set(loggedInUserID, forKey: "loggedInUserID")
             defaults.synchronize()
@@ -62,6 +62,7 @@ class MovieListViewController: UIViewController {
         let movieIndex: Int = (sender as? Int)!
         movieDetailVC.movieSelected = movies[movieIndex]
         movieDetailVC.selectedMovieRating = movies[movieIndex].calculateAvgRating(ratingList: ratingList)
+        movieDetailVC.ratingList = ratingList
     }
 }
 
@@ -140,4 +141,11 @@ extension MovieListViewController: UISearchBarDelegate {
         
     }
 }
+extension MovieListViewController: addedReviewDelegate {
+    func didAddReview(vc: MovieDetailViewController) {
+        self.dismiss(animated: true, completion: nil)
+        refreshMovieList()
+    }
+}
+
 

@@ -8,6 +8,11 @@
 
 import UIKit
 import Cosmos
+
+protocol AddReviewDelegate {
+    func didAddReview(vc: PopUpAddReviewViewController)
+}
+
 class PopUpAddReviewViewController: UIViewController {
     
     var movieID: String?
@@ -18,7 +23,7 @@ class PopUpAddReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         starRating.settings.fillMode = .half
         // Do any additional setup after loading the view.
     }
@@ -38,8 +43,7 @@ class PopUpAddReviewViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-  
-    
+  var delegate: AddReviewDelegate?
     
     @IBAction func dissmissingTouch(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -52,6 +56,8 @@ class PopUpAddReviewViewController: UIViewController {
         RatingLoader.sharedLoader.postNewRating(newRating: newRating) { (success: Bool, error: Error?) in
             
         }
-        self.dismiss(animated: true, completion: nil)
+        self.delegate?.didAddReview(vc: self)
     }
+    
 }
+
