@@ -145,72 +145,97 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z7M-Lc-yB2">
-                                <rect key="frame" x="10" y="99" width="350" height="468"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-zt-c4h">
-                                        <rect key="frame" x="8" y="8" width="151" height="201"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RGJ-fB-nCx" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="8" y="217" width="180" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Average Rating"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="4hi-4Q-ihP">
-                                        <rect key="frame" x="8" y="271" width="334" height="162"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <color key="tintColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
-                                    </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8L-Ko-0sR">
-                                        <rect key="frame" x="162" y="89" width="188" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                                        <color key="textColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <size key="shadowOffset" width="2" height="2"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwf-a8-5IF">
-                                        <rect key="frame" x="166" y="8" width="184" height="73"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="28"/>
-                                        <color key="textColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <size key="shadowOffset" width="2" height="2"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTI-by-JZA">
-                                        <rect key="frame" x="8" y="233" width="80" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Add Review">
-                                            <color key="titleColor" red="0.20973882769999999" green="0.3493012539" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="4g0-oJ-l5R" kind="popoverPresentation" identifier="showPopOutViewController" popoverAnchorView="jTI-by-JZA" id="4sx-FJ-vVT">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-zt-c4h">
+                                <rect key="frame" x="28" y="76" width="150" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="adn-Tm-8Xq"/>
+                                    <constraint firstAttribute="height" constant="200" id="pA8-hX-Jxd"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGJ-fB-nCx" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="28" y="291" width="180" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="VIW-p5-xNP"/>
+                                    <constraint firstAttribute="height" constant="20" id="VmL-2H-CKq"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Average Rating"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="release Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8L-Ko-0sR">
+                                <rect key="frame" x="190" y="141" width="165" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="97J-dS-7IM"/>
+                                    <constraint firstAttribute="width" constant="165" id="Erh-r4-2EU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                <color key="textColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwf-a8-5IF">
+                                <rect key="frame" x="190" y="76" width="165" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bLH-dZ-DL1"/>
+                                    <constraint firstAttribute="width" constant="165" id="w4Q-qE-fZ0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="28"/>
+                                <color key="textColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTI-by-JZA">
+                                <rect key="frame" x="28" y="319" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CVe-38-Pwf"/>
+                                    <constraint firstAttribute="width" constant="80" id="o7I-Me-RJk"/>
+                                </constraints>
+                                <state key="normal" title="Add Review">
+                                    <color key="titleColor" red="0.20973882769999999" green="0.3493012539" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="4g0-oJ-l5R" kind="popoverPresentation" identifier="showPopOutViewController" popoverAnchorView="jTI-by-JZA" id="4sx-FJ-vVT">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="4hi-4Q-ihP">
+                                <rect key="frame" x="28" y="359" width="327" height="200"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="tintColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Zyg-gb-w45"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="1" green="0.98535947660000001" blue="0.99972485229999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Odd-zt-c4h" firstAttribute="top" secondItem="96l-E0-Q0N" secondAttribute="bottom" constant="12" id="0ag-dp-Oiv"/>
+                            <constraint firstItem="zwf-a8-5IF" firstAttribute="top" secondItem="96l-E0-Q0N" secondAttribute="bottom" constant="12" id="30x-2r-73U"/>
+                            <constraint firstItem="4hi-4Q-ihP" firstAttribute="leading" secondItem="jTI-by-JZA" secondAttribute="leading" id="A30-sa-kUv"/>
+                            <constraint firstItem="N8L-Ko-0sR" firstAttribute="leading" secondItem="Odd-zt-c4h" secondAttribute="trailing" constant="12" id="BZ8-AO-JHL"/>
+                            <constraint firstItem="jTI-by-JZA" firstAttribute="leading" secondItem="RGJ-fB-nCx" secondAttribute="leading" id="GU8-eH-T9t"/>
+                            <constraint firstItem="Odd-zt-c4h" firstAttribute="leading" secondItem="g3m-el-TaW" secondAttribute="leadingMargin" constant="12" id="I78-Ib-Fsh"/>
+                            <constraint firstItem="jTI-by-JZA" firstAttribute="top" secondItem="RGJ-fB-nCx" secondAttribute="bottom" constant="8" id="Nx2-Lc-Rrt"/>
+                            <constraint firstItem="RGJ-fB-nCx" firstAttribute="top" secondItem="Odd-zt-c4h" secondAttribute="bottom" constant="15" id="R0K-cq-umo"/>
+                            <constraint firstItem="RGJ-fB-nCx" firstAttribute="leading" secondItem="Odd-zt-c4h" secondAttribute="leading" id="RLs-5l-FHQ"/>
+                            <constraint firstItem="N8L-Ko-0sR" firstAttribute="top" secondItem="zwf-a8-5IF" secondAttribute="bottom" constant="15" id="RyP-0L-vXf"/>
+                            <constraint firstItem="4hi-4Q-ihP" firstAttribute="top" secondItem="jTI-by-JZA" secondAttribute="bottom" constant="10" id="jEa-Jj-9Fe"/>
+                            <constraint firstItem="4hi-4Q-ihP" firstAttribute="trailing" secondItem="N8L-Ko-0sR" secondAttribute="trailing" id="ods-pZ-Mbk"/>
+                            <constraint firstItem="zwf-a8-5IF" firstAttribute="leading" secondItem="Odd-zt-c4h" secondAttribute="trailing" constant="12" id="vYh-Lg-bxA"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="avgRating" destination="RGJ-fB-nCx" id="Rmc-5D-GNz"/>
@@ -239,37 +264,50 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adD-7K-vRD">
                                 <rect key="frame" x="0.0" y="286" width="375" height="96"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9n7-II-i6N" customClass="CosmosView" customModule="Cosmos">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9n7-II-i6N" customClass="CosmosView" customModule="Cosmos">
                                         <rect key="frame" x="127" y="8" width="120" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment *Optional" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vcZ-c1-axO">
-                                        <rect key="frame" x="79" y="33" width="217" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment *Optional" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vcZ-c1-axO">
+                                        <rect key="frame" x="80" y="33" width="215" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="215" id="1s6-uY-7u7"/>
+                                            <constraint firstAttribute="height" constant="30" id="e7g-T6-MW3"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxa-rp-lkR">
-                                        <rect key="frame" x="318" y="33" width="49" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Submit"/>
-                                        <connections>
-                                            <action selector="submitButton:" destination="4g0-oJ-l5R" eventType="touchUpInside" id="BwP-71-5sy"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21306266191709844" green="0.21306266191709844" blue="0.21306266191709844" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="vcZ-c1-axO" firstAttribute="top" secondItem="9n7-II-i6N" secondAttribute="bottom" constant="5" id="4RV-8Q-2yP"/>
+                                    <constraint firstItem="9n7-II-i6N" firstAttribute="centerX" secondItem="adD-7K-vRD" secondAttribute="centerX" id="EnA-00-9jB"/>
+                                    <constraint firstItem="9n7-II-i6N" firstAttribute="top" secondItem="adD-7K-vRD" secondAttribute="topMargin" id="PGz-a4-nhq"/>
+                                    <constraint firstAttribute="height" constant="96" id="Rha-Rj-7q6"/>
+                                    <constraint firstItem="9n7-II-i6N" firstAttribute="centerX" secondItem="vcZ-c1-axO" secondAttribute="centerX" id="c0V-Hn-vob"/>
+                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxa-rp-lkR">
+                                <rect key="frame" x="309" y="318" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MG8-eg-jgB"/>
+                                    <constraint firstAttribute="width" constant="50" id="vfr-0m-GvV"/>
+                                </constraints>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButton:" destination="4g0-oJ-l5R" eventType="touchUpInside" id="BwP-71-5sy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="adD-7K-vRD" firstAttribute="leading" secondItem="gBJ-kZ-Lsk" secondAttribute="leading" id="3U4-OD-Scg"/>
-                            <constraint firstAttribute="trailing" secondItem="adD-7K-vRD" secondAttribute="trailing" id="EpH-G1-Kkc"/>
-                            <constraint firstItem="lsA-6I-w6w" firstAttribute="top" secondItem="adD-7K-vRD" secondAttribute="bottom" constant="285" id="KOz-B4-v8w"/>
-                            <constraint firstItem="adD-7K-vRD" firstAttribute="top" secondItem="cfO-Lw-Wr3" secondAttribute="bottom" constant="266" id="f6T-kc-DC5"/>
+                            <constraint firstItem="adD-7K-vRD" firstAttribute="centerY" secondItem="gBJ-kZ-Lsk" secondAttribute="centerY" id="Grk-LQ-Mvk"/>
+                            <constraint firstAttribute="trailing" secondItem="adD-7K-vRD" secondAttribute="trailing" id="JgO-e2-HWt"/>
+                            <constraint firstItem="fxa-rp-lkR" firstAttribute="trailing" secondItem="gBJ-kZ-Lsk" secondAttribute="trailingMargin" id="Ksn-Iu-Fud"/>
+                            <constraint firstItem="adD-7K-vRD" firstAttribute="leading" secondItem="gBJ-kZ-Lsk" secondAttribute="leading" id="VKu-by-KMw"/>
+                            <constraint firstItem="fxa-rp-lkR" firstAttribute="centerY" secondItem="gBJ-kZ-Lsk" secondAttribute="centerY" id="ydi-Pk-FT1"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="IDb-5D-NR3" appends="YES" id="mt6-vF-9eV"/>
