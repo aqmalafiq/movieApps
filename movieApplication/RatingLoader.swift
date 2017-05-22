@@ -68,14 +68,33 @@ extension RatingLoader {
                 let ratingID: String = jsonData["objectId"] as! String
                 newRating.ratingID = ratingID
                 self.postNewRatingAddRelationMovieIDColumn(newRating: newRating, completionBlock: { (success: Bool, error: Error?) in
-                    //code
                     self.postNewRatingAddRelationUserIDColumn(newRating: newRating, completionBlock: { (success: Bool, error: Error?) in
-                        //code
-                         completionBlock(true, nil)
+                        let httpCode: Int = (response as! HTTPURLResponse).statusCode
+                        if httpCode == 200 {
+                            DispatchQueue.main.async {
+                                completionBlock(true, nil)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                completionBlock(false, nil)
+                            }
+                        }
                     })
+                    let httpCode: Int = (response as! HTTPURLResponse).statusCode
+                    if httpCode == 200 {
+                        DispatchQueue.main.async {
+                            completionBlock(true, nil)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            completionBlock(false, nil)
+                        }
+                    }
                 })
             } else {
-                completionBlock(false, nil)
+                DispatchQueue.main.async {
+                    completionBlock(false, nil)
+                }
             }
         }
         postTask.resume()
@@ -91,9 +110,13 @@ extension RatingLoader {
         let postTask: URLSessionDataTask = self.session.dataTask(with: urlRequest) { (data: Data?, response: URLResponse?, error: Error?) in
             let httpCode: Int = (response as! HTTPURLResponse).statusCode
             if httpCode == 200 {
-                completionBlock(true, nil)
+                DispatchQueue.main.async {
+                    completionBlock(true, nil)
+                }
             } else {
-                completionBlock(false, nil)
+                DispatchQueue.main.async {
+                    completionBlock(false, nil)
+                }
             }
         }
         postTask.resume()
@@ -109,9 +132,13 @@ extension RatingLoader {
         let postTask: URLSessionDataTask = self.session.dataTask(with: urlRequest) { (data: Data?, response: URLResponse?, error: Error?) in
             let httpCode: Int = (response as! HTTPURLResponse).statusCode
             if httpCode == 200 {
-                completionBlock(true, nil)
+                DispatchQueue.main.async {
+                    completionBlock(true, nil)
+                }
             } else {
-                completionBlock(false, nil)
+                DispatchQueue.main.async {
+                    completionBlock(false, nil)
+                }
             }
         }
         postTask.resume()

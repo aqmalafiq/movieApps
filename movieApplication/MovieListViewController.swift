@@ -145,7 +145,7 @@ extension MovieListViewController: UISearchBarDelegate {
 extension MovieListViewController: addedReviewDelegate {
     func didAddReview(vc: MovieDetailViewController) {
         self.dismiss(animated: true, completion: nil)
-        sleep(3)
+       // sleep(3)
         refreshMovieList()
     }
 }

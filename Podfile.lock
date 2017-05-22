@@ -1,0 +1,12 @@
+PODS:
+  - Cosmos (9.0.0)
+
+DEPENDENCIES:
+  - Cosmos (~> 9.0)
+
+SPEC CHECKSUMS:
+  Cosmos: 33eee62b2a0418452aef470f711f83c3ea061b7b
+
+PODFILE CHECKSUM: dfcc18ee0e044cbab7c1769cff4f96b25b0a05a9
+
+COCOAPODS: 1.2.1

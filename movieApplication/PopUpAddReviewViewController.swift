@@ -54,7 +54,7 @@ class PopUpAddReviewViewController: UIViewController {
         let userID: String = defaults.object(forKey: "loggedInUserID") as! String
         let newRating: Rating = Rating.init(userID: userID, movieID: movieID!, rating: starRating.rating, ratingDescription: (ratingDescription.text) ?? "")
         RatingLoader.sharedLoader.postNewRating(newRating: newRating) { (success: Bool, error: Error?) in
-            
+           
         }
         self.delegate?.didAddReview(vc: self)
     }
