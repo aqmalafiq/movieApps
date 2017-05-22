@@ -59,6 +59,7 @@ class MovieListViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let movieDetailVC: MovieDetailViewController = segue.destination as! MovieDetailViewController
+        movieDetailVC.delegate = self
         let movieIndex: Int = (sender as? Int)!
         movieDetailVC.movieSelected = movies[movieIndex]
         movieDetailVC.selectedMovieRating = movies[movieIndex].calculateAvgRating(ratingList: ratingList)
@@ -144,6 +145,7 @@ extension MovieListViewController: UISearchBarDelegate {
 extension MovieListViewController: addedReviewDelegate {
     func didAddReview(vc: MovieDetailViewController) {
         self.dismiss(animated: true, completion: nil)
+        sleep(3)
         refreshMovieList()
     }
 }

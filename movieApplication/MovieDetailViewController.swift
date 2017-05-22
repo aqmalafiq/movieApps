@@ -56,6 +56,7 @@ class MovieDetailViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let popUpReviewVC: PopUpAddReviewViewController = segue.destination as! PopUpAddReviewViewController
+        popUpReviewVC.delegate = self
         popUpReviewVC.movieID = movieSelected?.id
         
     }
@@ -78,7 +79,7 @@ class MovieDetailViewController: UIViewController {
 extension MovieDetailViewController: AddReviewDelegate {
   
     func didAddReview(vc: PopUpAddReviewViewController) {
-        self.dismiss(animated: true, completion: nil)
+        _ = navigationController?.popToRootViewController(animated: true)
         self.delegate?.didAddReview(vc: self)
     }
 }
